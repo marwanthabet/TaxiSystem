@@ -8,7 +8,7 @@
 @endsection
 
 @section('page-large-title','Edit Admin')
-@section('page-small-title','Edit')
+@section('page-small-title','Edit Admin')
 @section('page-root-title','Types')
 
 @section('content')

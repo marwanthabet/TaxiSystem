@@ -6,7 +6,7 @@
 @endsection
 
 @section('page-large-title','Edit City')
-@section('page-small-title','Edit')
+@section('page-small-title','Edit City')
 @section('page-root-title','Cities')
 
 

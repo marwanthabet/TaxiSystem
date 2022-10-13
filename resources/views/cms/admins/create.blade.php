@@ -9,7 +9,7 @@
 
 @section('page-large-title','Create Admin')
 @section('page-small-title','Create')
-@section('page-root-title','Types')
+@section('page-root-title','Admin')
 
 @section('content')
 <!-- Main content -->

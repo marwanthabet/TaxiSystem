@@ -41,6 +41,7 @@ Route::prefix('cms/')->middleware('guest:admin,driver')->group(function(){
     Route::post('login', [AuthController::class, 'login']);
 });
 
+
 #************************************************************
 Route::get('/cms/forgot-password', [PasswordResetController::class, 'requestPassword'])->middleware('guest')->name('password.request');
 Route::post('/cms/forgot-password', [PasswordResetController::class, 'forgotPassword'])->middleware('guest')->name('password.email');

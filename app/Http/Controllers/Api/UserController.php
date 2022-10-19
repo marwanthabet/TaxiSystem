@@ -40,7 +40,7 @@ class UserController extends Controller
 
     public function postUser(Request $request)
     {
-        $user = new User();
+        
         $validator = Validator($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -52,6 +52,7 @@ class UserController extends Controller
                 'items' => $validator->errors()
             ], Response::HTTP_BAD_REQUEST);
         }
+        $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
@@ -81,6 +82,7 @@ class UserController extends Controller
         $user->save();
         return response()->json([
             'message' => __('admin.success'),
+            'items' => $user
         ], Response::HTTP_OK);
     }
 

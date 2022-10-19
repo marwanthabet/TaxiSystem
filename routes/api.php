@@ -22,11 +22,11 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('test', function(){
-    echo 'Test';
+Route::get('test', function () {
+    dd(config()->get('auth.guards'));
 });
 
-Route::prefix('auth')->group(function(){
+Route::prefix('auth')->group(function () {
     Route::post('register', [ApiAuthController::class, 'register']);
     Route::post('login', [ApiAuthController::class, 'login']);
     Route::post('login-PGCT', [ApiAuthController::class, 'loginPGCT']);
@@ -36,7 +36,7 @@ Route::prefix('auth')->group(function(){
 
 Route::get('types', [TypeController::class, 'index']);
 
-Route::middleware('auth:admin-api')->group(function(){
+Route::middleware('auth:admin-api')->group(function () {
     Route::apiResource('car-types', CarTypeController::class);
 });
 
@@ -44,7 +44,7 @@ Route::post('login', [UserController::class, 'access_token']);
 Route::post('refresh_token', [UserController::class, 'refresh_token']);
 
 Route::middleware('auth:api')->namespace('Api')->group(function () {
-    Route::get('user/{user_id?}', [UserController::class, 'getUser']);
+    Route::get('user/{user_id?}', [UserController::class, 'getUser']); 
     Route::post('user', [UserController::class, 'postUser']);
     Route::put('user', [UserController::class, 'putUser']);
     Route::delete('user', [UserController::class, 'deleteUser']);
@@ -52,10 +52,10 @@ Route::middleware('auth:api')->namespace('Api')->group(function () {
 
 
 
-Route::prefix('auth')->middleware('auth:admin-api')->group(function(){
+Route::prefix('auth')->middleware('auth:admin-api')->group(function () {
     Route::get('logout', [ApiAuthController::class, 'logout']);
 });
 
-Route::get('laravel-10', function(){
+Route::get('laravel-10', function () {
     return response()->json(['message' => 'Welcome In API - Eloquent']);
 });
